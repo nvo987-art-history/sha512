@@ -4,12 +4,13 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Nexarium SHA-512 Generator</title>
 
 <meta name="description"
-content="Privacy-focused SHA-512 hash generator">
+content="Professional SHA-512 Generator">
 
 <meta name="theme-color"
 content="#000000">
@@ -22,10 +23,21 @@ content="index,follow">
 :root{
 
 --gold:#d4af37;
---black:#000000;
---card:#101010;
---border:#252525;
---white:#ffffff;
+--gold-soft:#b8922f;
+
+--bg:#000000;
+
+--card:#0d0d0d;
+
+--border:#242424;
+
+--text:#d7d7d7;
+
+--muted:#9b9b9b;
+
+--success:#39d353;
+
+--error:#ff6b6b;
 
 }
 
@@ -37,155 +49,277 @@ box-sizing:border-box;
 
 }
 
+html{
+
+scroll-behavior:smooth;
+
+}
+
 body{
 
-background:var(--black);
-color:var(--white);
-font-family:Segoe UI,Arial,sans-serif;
+background:var(--bg);
+
+color:var(--text);
+
+font-family:
+Inter,
+Segoe UI,
+Arial,
+sans-serif;
+
+line-height:1.7;
 
 }
 
 header{
 
-padding:40px 20px;
+padding:55px 20px;
+
 text-align:center;
-border-bottom:2px solid var(--gold);
+
+border-bottom:
+1px solid var(--gold);
 
 }
 
 header h1{
 
 color:var(--gold);
-font-size:3rem;
-letter-spacing:3px;
+
+font-size:3.2rem;
+
+letter-spacing:4px;
+
+font-weight:700;
 
 }
 
-header p{
+header .subtitle{
+
+margin-top:12px;
+
+color:var(--text);
+
+font-size:1.05rem;
+
+}
+
+header .privacy{
 
 margin-top:10px;
+
+color:var(--muted);
+
+font-size:.95rem;
 
 }
 
 .container{
 
-max-width:1200px;
+max-width:1100px;
+
 margin:auto;
-padding:25px;
+
+padding:30px 20px;
 
 }
 
 .card{
 
 background:var(--card);
+
 border:1px solid var(--border);
-border-radius:12px;
-padding:20px;
-margin-bottom:20px;
+
+border-radius:18px;
+
+padding:28px;
+
+margin-bottom:24px;
 
 }
 
 .card h2{
 
 color:var(--gold);
-margin-bottom:15px;
+
+font-size:1.8rem;
+
+margin-bottom:18px;
 
 }
 
 textarea{
 
 width:100%;
-min-height:220px;
-padding:15px;
+
+min-height:240px;
+
+padding:16px;
+
 background:#050505;
-color:white;
-border:1px solid var(--gold);
-border-radius:10px;
+
+color:var(--text);
+
+border:1px solid var(--gold-soft);
+
+border-radius:12px;
+
 resize:vertical;
+
+font-size:15px;
 
 }
 
 input[type=text]{
 
 width:100%;
-padding:12px;
+
+padding:14px;
+
 background:#050505;
-color:white;
-border:1px solid var(--gold);
-border-radius:8px;
+
+color:var(--text);
+
+border:1px solid var(--gold-soft);
+
+border-radius:12px;
+
+font-size:15px;
+
+}
+
+.actions{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-top:18px;
 
 }
 
 button{
 
 background:var(--gold);
-color:black;
-font-weight:bold;
+
+color:#000;
+
+font-weight:700;
+
 border:none;
-padding:12px 18px;
-border-radius:8px;
+
+padding:13px 20px;
+
+border-radius:10px;
+
 cursor:pointer;
-margin:5px;
 
 }
 
 button:hover{
 
-opacity:.9;
+opacity:.92;
 
 }
 
 .upload-btn{
 
 display:inline-block;
+
 background:var(--gold);
-color:black;
-font-weight:bold;
-padding:12px 18px;
-border-radius:8px;
-cursor:pointer;
 
-}
+color:#000;
 
-#result{
+font-weight:700;
 
-margin-top:15px;
-padding:15px;
-background:#050505;
-border:1px solid var(--gold);
+padding:13px 20px;
+
 border-radius:10px;
-word-break:break-all;
-font-family:Consolas,monospace;
+
+cursor:pointer;
 
 }
 
 .stats{
 
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-top:15px;
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
+
+gap:12px;
+
+margin-top:18px;
 
 }
 
 .stat{
 
-padding:10px 15px;
 background:#050505;
+
 border:1px solid var(--border);
-border-radius:8px;
+
+border-radius:12px;
+
+padding:14px;
+
+}
+
+.stat-label{
+
+display:block;
+
+color:var(--muted);
+
+font-size:.85rem;
+
+margin-bottom:4px;
+
+}
+
+.stat-value{
+
+font-weight:600;
+
+}
+
+#result{
+
+margin-top:20px;
+
+padding:18px;
+
+background:#050505;
+
+border:1px solid var(--gold-soft);
+
+border-radius:12px;
+
+word-break:break-all;
+
+font-family:
+Consolas,
+monospace;
+
+min-height:90px;
 
 }
 
 .success{
 
-color:#00ff66;
+color:var(--success);
+
+font-weight:700;
 
 }
 
 .error{
 
-color:#ff5555;
+color:var(--error);
+
+font-weight:700;
 
 }
 
@@ -193,18 +327,16 @@ a{
 
 color:var(--gold);
 
-}
-
-footer{
-
-text-align:center;
-padding:30px;
-border-top:2px solid var(--gold);
-margin-top:40px;
+text-decoration:none;
 
 }
 
-</style>
+a:hover{
+
+text-decoration:underline;
+
+}
+  </style>
 
 </head>
 
@@ -214,9 +346,17 @@ margin-top:40px;
 
 <h1>NEXARIUM SHA-512</h1>
 
-<p>Client-Side Security Utility</p>
+<p class="subtitle">
 
-<p>No Cookies • No Analytics • No Tracking</p>
+Professional Client-Side Hash Generator
+
+</p>
+
+<p class="privacy">
+
+No Cookies • No Analytics • No Tracking • Local Processing
+
+</p>
 
 </header>
 
@@ -228,49 +368,108 @@ margin-top:40px;
 
 <textarea
 id="textInput"
-placeholder="Enter text"></textarea>
+placeholder="Enter text to generate a SHA-512 hash"></textarea>
 
-<br><br>
+<div class="actions">
 
-<button id="hashBtn">Generate</button>
+<button id="hashBtn">
+Generate
+</button>
 
-<button id="copyBtn">Copy</button>
+<button id="copyBtn">
+Copy
+</button>
 
-<button id="clearBtn">Clear</button>
+<button id="clearBtn">
+Clear All
+</button>
 
-<button id="txtBtn">TXT</button>
+<button id="txtBtn">
+Export TXT
+</button>
 
-<button id="jsonBtn">JSON</button>
+<button id="jsonBtn">
+Export JSON
+</button>
+
+</div>
 
 <div class="stats">
 
 <div class="stat">
-Characters:
-<span id="charCount">0</span>
+
+<span class="stat-label">
+Characters
+</span>
+
+<div
+class="stat-value"
+id="charCount">
+
+0
+
+</div>
+
 </div>
 
 <div class="stat">
-Bytes:
-<span id="byteCount">0</span>
+
+<span class="stat-label">
+Bytes
+</span>
+
+<div
+class="stat-value"
+id="byteCount">
+
+0
+
+</div>
+
 </div>
 
 <div class="stat">
-Hash Time:
-<span id="hashTime">0 ms</span>
+
+<span class="stat-label">
+Hash Time
+</span>
+
+<div
+class="stat-value"
+id="hashTime">
+
+0 ms
+
+</div>
+
 </div>
 
 <div class="stat">
-Hash Length:
-<span id="hashLength">0</span>
+
+<span class="stat-label">
+Hash Length
+</span>
+
+<div
+class="stat-value"
+id="hashLength">
+
+0
+
+</div>
+
 </div>
 
 </div>
 
 <div id="result">
+
 Awaiting input...
+
 </div>
 
 </div>
+
 <div class="card">
 
 <h2>File Hashing</h2>
@@ -290,7 +489,10 @@ hidden>
 
 <div
 id="selectedFile"
-style="margin-top:15px;">
+style="
+margin-top:18px;
+color:var(--muted);
+">
 
 No file selected
 
@@ -305,9 +507,10 @@ No file selected
 <input
 type="text"
 id="verifyInput"
-placeholder="Paste expected SHA-512 hash">
+placeholder="Paste a SHA-512 hash for comparison">
 
-<br><br>
+<div
+class="actions">
 
 <button id="verifyBtn">
 
@@ -315,9 +518,14 @@ Verify
 
 </button>
 
+</div>
+
 <div
 id="verifyResult"
-style="margin-top:15px;">
+style="
+margin-top:15px;
+min-height:30px;
+">
 
 </div>
 
@@ -325,87 +533,164 @@ style="margin-top:15px;">
 
 <div class="card">
 
-<h2>Privacy & GDPR</h2>
+<h2>Privacy & GDPR Statement</h2>
 
 <p>
-This utility is designed to perform SHA-512
-operations locally within the user's browser.
+
+This utility is designed to perform
+cryptographic SHA-512 operations locally
+within the user's browser environment.
+
 </p>
 
 <br>
 
 <p>
-No cookies are intentionally used by the
-application itself.
+
+The application does not intentionally
+collect, store, transmit, sell or profile
+personal information submitted through
+the interface.
+
 </p>
 
 <br>
 
 <p>
-No advertising networks are integrated.
+
+No cookies, advertising technologies,
+cross-site tracking mechanisms or
+analytics platforms are intentionally
+integrated into the application.
+
 </p>
 
 <br>
 
 <p>
-No analytics systems are intentionally used.
+
+No registration, authentication,
+subscription or user account is required.
+
 </p>
 
 <br>
 
 <p>
-No registration or user account is required.
+
+Hash calculations are executed locally
+using browser-supported cryptographic
+functions and are not intentionally
+transmitted for processing purposes.
+
 </p>
 
 <br>
 
 <p>
-No text or files are intentionally transmitted
-for hash calculation purposes.
-</p>
 
-<br>
+Infrastructure providers, hosting
+platforms, DNS operators and network
+providers may generate technical logs
+required for security, availability,
+abuse prevention and operational
+purposes.
 
-<p>
-Server logs may be generated by hosting
-providers as part of normal web operations.
 </p>
 
 </div>
-
 <div class="card">
 
 <h2>Legal Notice</h2>
 
 <p>
-This service is provided on an "as-is" basis
-without warranties of any kind.
+
+This service is provided on an
+"as-is" and "as-available" basis
+without warranties, guarantees
+or representations of any kind,
+whether express or implied.
+
 </p>
 
 <br>
 
 <p>
-Users are responsible for independently
-verifying cryptographic results before use
-in production, legal or security-sensitive
+
+Users remain solely responsible
+for independently validating all
+cryptographic outputs before
+relying upon them within legal,
+commercial, operational, security,
+compliance or production
 environments.
+
 </p>
 
 <br>
 
 <p>
-The operator shall not be liable for direct,
-indirect or consequential damages arising
-from the use of this service.
+
+The operator shall not be liable
+for direct, indirect, incidental,
+special, consequential or punitive
+damages arising from the use,
+misuse, interpretation or reliance
+upon this service.
+
+</p>
+
+<br>
+
+<p>
+
+The service is intended as a
+technical utility and does not
+constitute legal, regulatory,
+compliance or cybersecurity advice.
+
 </p>
 
 </div>
 
-<footer>
+<footer
+style="
+margin-top:50px;
+padding:40px 20px;
+border-top:1px solid var(--gold);
+text-align:center;
+">
 
-<p>
+<div
+style="
+font-size:1.4rem;
+font-weight:700;
+color:var(--gold);
+margin-bottom:20px;
+">
 
-Contact:
+NEXARIUM
+
+</div>
+
+<div
+style="
+color:var(--muted);
+margin-bottom:15px;
+">
+
+Professional Cryptographic Utilities
+
+</div>
+
+<div
+style="
+margin-bottom:12px;
+">
+
+Contact
+
+<br><br>
 
 <a href="mailto:contact@nexarium.us">
 
@@ -413,13 +698,16 @@ contact@nexarium.us
 
 </a>
 
-</p>
+</div>
 
-<br>
+<div
+style="
+margin-bottom:20px;
+">
 
-<p>
+DID Identity
 
-DID:
+<br><br>
 
 <a href="https://identity.nvo987.us">
 
@@ -427,17 +715,21 @@ did:web:identity.nvo987.us
 
 </a>
 
-</p>
+</div>
 
-<br>
-
-<p>
+<div
+style="
+color:var(--muted);
+font-size:.9rem;
+">
 
 © Nexarium
 
-</p>
+</div>
 
 </footer>
+
+</div>
 
 <script>
 
@@ -552,7 +844,8 @@ document
 "click",
 generateHash
 );
-  document
+
+document
 .getElementById(
 "copyBtn"
 )
@@ -576,7 +869,32 @@ document
 "click",
 function(){
 
-textInput.value="";
+textInput.value = "";
+
+document
+.getElementById(
+"verifyInput"
+)
+.value = "";
+
+document
+.getElementById(
+"verifyResult"
+)
+.innerHTML = "";
+
+document
+.getElementById(
+"fileInput"
+)
+.value = "";
+
+document
+.getElementById(
+"selectedFile"
+)
+.innerText =
+"No file selected";
 
 resultBox.innerText =
 "Awaiting input...";
@@ -585,33 +903,29 @@ document
 .getElementById(
 "charCount"
 )
-.textContent = 0;
+.textContent = "0";
 
 document
 .getElementById(
 "byteCount"
 )
-.textContent = 0;
+.textContent = "0";
 
-hashLength.textContent = 0;
+hashLength.textContent =
+"0";
 
 hashTime.textContent =
 "0 ms";
 
-document
-.getElementById(
-"verifyResult"
-)
-.innerHTML = "";
-
 }
 );
-
-function exportTXT(){
+  function exportTXT(){
 
 const blob =
 new Blob(
-[resultBox.innerText],
+[
+resultBox.innerText
+],
 {
 type:"text/plain"
 }
@@ -726,12 +1040,14 @@ document
 "verifyInput"
 )
 .value
-.trim();
+.trim()
+.toLowerCase();
 
 const actual =
 resultBox
 .innerText
-.trim();
+.trim()
+.toLowerCase();
 
 const target =
 document
@@ -854,10 +1170,11 @@ generateHash();
 );
 
 console.log(
-"Nexarium SHA-512 Ready"
+"Nexarium SHA-512 Professional Ready"
 );
 
 </script>
 
 </body>
+
 </html>
