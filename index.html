@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Nexarium SHA-512 Generator</title>
+
+<meta name="description"
+content="Privacy-focused SHA-512 hash generator.">
+
+<meta name="theme-color"
+content="#000000">
+
+<meta name="robots"
+content="index,follow">
+
+<meta http-equiv="X-Content-Type-Options"
+content="nosniff">
+
+<meta http-equiv="Referrer-Policy"
+content="no-referrer">
+
+<style>
+
+:root{
+
+--gold:#d4af37;
+--bg:#000000;
+--card:#111111;
+--border:#2a2a2a;
+--text:#ffffff;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:var(--bg);
+color:var(--text);
+font-family:Segoe UI,Arial,sans-serif;
+
+}
+
+header{
+
+padding:40px 20px;
+text-align:center;
+border-bottom:2px solid var(--gold);
+
+}
+
+header h1{
+
+color:var(--gold);
+font-size:3rem;
+letter-spacing:3px;
+
+}
+
+header p{
+
+margin-top:10px;
+
+}
+
+.container{
+
+max-width:1300px;
+margin:auto;
+padding:25px;
+
+}
+
+.card{
+
+background:var(--card);
+border:1px solid var(--border);
+border-radius:12px;
+padding:20px;
+margin-bottom:20px;
+
+}
+
+.card h2{
+
+color:var(--gold);
+margin-bottom:15px;
+
+}
+
+textarea{
+
+width:100%;
+min-height:220px;
+padding:15px;
+background:#050505;
+color:white;
+border:1px solid var(--gold);
+border-radius:10px;
+resize:vertical;
+
+}
+
+input[type=text]{
+
+width:100%;
+padding:12px;
+background:#050505;
+color:white;
+border:1px solid var(--gold);
+border-radius:8px;
+
+}
+
+input[type=file]{
+
+width:100%;
+padding:12px;
+background:#050505;
+color:white;
+border:1px solid var(--gold);
+border-radius:8px;
+
+}
+
+button{
+
+background:var(--gold);
+color:black;
+font-weight:bold;
+border:none;
+padding:12px 18px;
+border-radius:8px;
+cursor:pointer;
+margin:4px;
+
+}
+
+button:hover{
+
+opacity:.9;
+
+}
+
+#result{
+
+margin-top:15px;
+padding:15px;
+background:#050505;
+border:1px solid var(--gold);
+border-radius:10px;
+word-break:break-all;
+font-family:Consolas,monospace;
+
+}
+
+.stat-grid{
+
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:15px;
+
+}
+
+.stat{
+
+padding:10px 15px;
+background:#050505;
+border:1px solid var(--border);
+border-radius:8px;
+
+}
+
+#dropzone{
+
+padding:50px;
+border:2px dashed var(--gold);
+border-radius:12px;
+text-align:center;
+
+}
+
+a{
+
+color:var(--gold);
+
+}
+
+.success{
+
+color:#00ff66;
+
+}
+
+.error{
+
+color:#ff5555;
+
+}
+
+footer{
+
+padding:30px;
+text-align:center;
+border-top:2px solid var(--gold);
+margin-top:40px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>NEXARIUM SHA-512</h1>
+
+<p>
+Client-Side Security Utility
+</p>
+
+<p>
+No Cookies • No Analytics • No Tracking
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>SHA-512 Text Hash</h2>
+
+<textarea
+id="textInput"
+placeholder="Enter text"></textarea>
+
+<br><br>
+
+<button id="hashBtn">
+Generate
+</button>
+
+<button id="copyBtn">
+Copy
+</button>
+
+<button id="clearBtn">
+Clear
+</button>
+
+<button id="txtBtn">
+TXT
+</button>
+
+<button id="jsonBtn">
+JSON
+</button>
+
+<div class="stat-grid">
+
+<div class="stat">
+Characters:
+<span id="charCount">0</span>
+</div>
+
+<div class="stat">
+Bytes:
+<span id="byteCount">0</span>
+</div>
+
+<div class="stat">
+Hash Time:
+<span id="hashTime">0 ms</span>
+</div>
+
+<div class="stat">
+Hash Length:
+<span id="hashLength">0</span>
+</div>
+
+</div>
+
+<div id="result">
+Awaiting input...
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>File Hashing</h2>
+
+<input
+type="file"
+id="fileInput">
+
+</div>
+
+<div class="card">
+
+<h2>Drag & Drop</h2>
+
+<div id="dropzone">
+
+Drop file here
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Hash Verification</h2>
+
+<input
+type="text"
+id="verifyInput"
+placeholder="Paste expected SHA-512">
+
+<br><br>
+
+<button id="verifyBtn">
+Verify
+</button>
+
+<div
+id="verifyResult"
+style="margin-top:15px;">
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Extra Tools</h2>
+
+<button id="timestampBtn">
+Unix Timestamp
+</button>
+
+<button id="randomBtn">
+Generate Random ID
+</button>
+
+<button id="base64Btn">
+Text → Base64
+</button>
+
+<div
+id="toolOutput"
+style="margin-top:15px;">
+Ready
+</div>
+
+  </div>
+  <div class="card">
+
+<h2>Privacy & GDPR</h2>
+
+<p>
+This utility is designed to perform SHA-512
+operations locally within the user's browser.
+</p>
+
+<br>
+
+<p>
+No cookies are intentionally used by the
+application itself.
+</p>
+
+<br>
+
+<p>
+No advertising networks are integrated.
+</p>
+
+<br>
+
+<p>
+No analytics platforms are intentionally used.
+</p>
+
+<br>
+
+<p>
+No registration or user account is required.
+</p>
+
+<br>
+
+<p>
+No text or files are intentionally transmitted
+for hash calculation purposes.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Legal Notice</h2>
+
+<p>
+The service is provided on an "as-is" basis
+without warranties of any kind.
+</p>
+
+<br>
+
+<p>
+Users are responsible for validating
+cryptographic results before relying upon
+them in production or legal environments.
+</p>
+
+<br>
+
+<p>
+The operator shall not be liable for damages
+arising from the use of this utility.
+</p>
+
+</div>
+
+<footer>
+
+<p>
+
+Contact:
+
+<a href="mailto:contact@nexarium.us">
+contact@nexarium.us
+</a>
+
+</p>
+
+<br>
+
+<p>
+
+DID:
+
+<a href="https://identity.nvo987.us">
+did:web:identity.nvo987.us
+</a>
+
+</p>
+
+<br>
+
+<p>
+© Nexarium
+</p>
+
+</footer>
+
+<script>
+
+const textInput =
+document.getElementById(
+"textInput"
+);
+
+const resultBox =
+document.getElementById(
+"result"
+);
+
+const hashTime =
+document.getElementById(
+"hashTime"
+);
+
+const hashLength =
+document.getElementById(
+"hashLength"
+);
+
+const toolOutput =
+document.getElementById(
+"toolOutput"
+);
+
+textInput.addEventListener(
+"input",
+function(){
+
+document.getElementById(
+"charCount"
+).textContent =
+this.value.length;
+
+document.getElementById(
+"byteCount"
+).textContent =
+new TextEncoder()
+.encode(this.value)
+.length;
+
+}
+);
+
+async function sha512(text){
+
+const data =
+new TextEncoder()
+.encode(text);
+
+const hash =
+await crypto.subtle.digest(
+"SHA-512",
+data
+);
+
+return Array
+.from(
+new Uint8Array(hash)
+)
+.map(
+b =>
+b.toString(16)
+.padStart(2,"0")
+)
+.join("");
+
+}
+
+async function generateHash(){
+
+const value =
+textInput.value;
+
+if(!value){
+
+resultBox.innerText =
+"Please enter text.";
+
+return;
+
+}
+
+const start =
+performance.now();
+
+const hash =
+await sha512(value);
+
+const end =
+performance.now();
+
+resultBox.innerText =
+hash;
+
+hashLength.textContent =
+hash.length;
+
+hashTime.textContent =
+(end-start).toFixed(2)
++ " ms";
+
+}
+
+document
+.getElementById(
+"hashBtn"
+)
+.addEventListener(
+"click",
+generateHash
+);
+
+document
+.getElementById(
+"copyBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+navigator.clipboard
+.writeText(
+resultBox.innerText
+);
+
+}
+);
+
+document
+.getElementById(
+"clearBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+textInput.value="";
+
+resultBox.innerText=
+"Awaiting input...";
+
+document
+.getElementById(
+"charCount"
+).textContent=0;
+
+document
+.getElementById(
+"byteCount"
+).textContent=0;
+
+hashLength.textContent=0;
+
+}
+);
+
+function exportTXT(){
+
+const blob =
+new Blob(
+[resultBox.innerText],
+{
+type:"text/plain"
+}
+);
+
+const url =
+URL.createObjectURL(blob);
+
+const a =
+document.createElement("a");
+
+a.href=url;
+
+a.download=
+"sha512.txt";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+}
+
+document
+.getElementById(
+"txtBtn"
+)
+.addEventListener(
+"click",
+exportTXT
+);
+
+function exportJSON(){
+
+const data = {
+
+algorithm:"SHA-512",
+
+timestamp:
+new Date()
+.toISOString(),
+
+hash:
+resultBox.innerText
+
+};
+
+const blob =
+new Blob(
+[
+JSON.stringify(
+data,
+null,
+2
+)
+],
+{
+type:
+"application/json"
+}
+);
+
+const url =
+URL.createObjectURL(blob);
+
+const a =
+document.createElement("a");
+
+a.href=url;
+
+a.download=
+"sha512.json";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+}
+
+document
+.getElementById(
+"jsonBtn"
+)
+.addEventListener(
+"click",
+exportJSON
+);
+  document
+.getElementById(
+"verifyBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+const expected =
+document
+.getElementById(
+"verifyInput"
+)
+.value
+.trim();
+
+const actual =
+resultBox
+.innerText
+.trim();
+
+const target =
+document
+.getElementById(
+"verifyResult"
+);
+
+if(
+!expected
+){
+
+target.innerHTML =
+"<span class='error'>No hash provided.</span>";
+
+return;
+
+}
+
+if(
+actual===expected
+){
+
+target.innerHTML =
+"<span class='success'>MATCH</span>";
+
+}else{
+
+target.innerHTML =
+"<span class='error'>NO MATCH</span>";
+
+}
+
+}
+);
+
+document
+.getElementById(
+"timestampBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+toolOutput.innerText =
+Math.floor(
+Date.now()/1000
+);
+
+}
+);
+
+document
+.getElementById(
+"randomBtn"
+)
+.addEventListener(
+"click",
+function(){
+
+const bytes =
+new Uint8Array(16);
+
+crypto.getRandomValues(
+bytes
+);
+
+const id =
+Array.from(bytes)
+.map(
+b =>
+b.toString(16)
+.padStart(2,"0")
+)
+.join("");
+
+toolOutput.innerText =
+id;
+
+}
+);
+
+document
+.getElementById(
+"base64Btn"
+)
+.addEventListener(
+"click",
+function(){
+
+const value =
+textInput.value;
+
+if(!value){
+
+toolOutput.innerText =
+"No text entered.";
+
+return;
+
+}
+
+toolOutput.innerText =
+btoa(value);
+
+}
+);
+
+document
+.getElementById(
+"fileInput"
+)
+.addEventListener(
+"change",
+async function(){
+
+const file =
+this.files[0];
+
+if(!file){
+return;
+}
+
+const start =
+performance.now();
+
+const buffer =
+await file.arrayBuffer();
+
+const hash =
+await crypto.subtle.digest(
+"SHA-512",
+buffer
+);
+
+const hex =
+Array
+.from(
+new Uint8Array(hash)
+)
+.map(
+b =>
+b.toString(16)
+.padStart(2,"0")
+)
+.join("");
+
+resultBox.innerText =
+hex;
+
+hashLength.textContent =
+hex.length;
+
+const end =
+performance.now();
+
+hashTime.textContent =
+(end-start).toFixed(2)
++ " ms";
+
+}
+);
+
+const dropzone =
+document.getElementById(
+"dropzone"
+);
+
+dropzone.addEventListener(
+"dragover",
+function(e){
+
+e.preventDefault();
+
+}
+);
+
+dropzone.addEventListener(
+"dragenter",
+function(e){
+
+e.preventDefault();
+
+dropzone.style.borderColor =
+"#ffffff";
+
+}
+);
+
+dropzone.addEventListener(
+"dragleave",
+function(){
+
+dropzone.style.borderColor =
+"#d4af37";
+
+}
+);
+
+dropzone.addEventListener(
+"drop",
+async function(e){
+
+e.preventDefault();
+
+dropzone.style.borderColor =
+"#d4af37";
+
+const file =
+e.dataTransfer.files[0];
+
+if(!file){
+return;
+}
+
+const start =
+performance.now();
+
+const buffer =
+await file.arrayBuffer();
+
+const hash =
+await crypto.subtle.digest(
+"SHA-512",
+buffer
+);
+
+const hex =
+Array
+.from(
+new Uint8Array(hash)
+)
+.map(
+b =>
+b.toString(16)
+.padStart(2,"0")
+)
+.join("");
+
+resultBox.innerText =
+hex;
+
+hashLength.textContent =
+hex.length;
+
+const end =
+performance.now();
+
+hashTime.textContent =
+(end-start).toFixed(2)
++ " ms";
+
+}
+);
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(
+e.ctrlKey &&
+e.key==="Enter"
+){
+
+generateHash();
+
+}
+
+if(
+e.ctrlKey &&
+e.key==="l"
+){
+
+e.preventDefault();
+
+textInput.value="";
+
+}
+
+}
+);
+
+console.log(
+"Nexarium SHA-512 Generator Ready"
+);
+
+</script>
+
+</body>
+</html>
