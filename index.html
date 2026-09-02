@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NEXARIUM SHA-512 Generator | Professional Local SHA-512 Hash Utility | NVO987 | Nicholas Van-Orton</title>
+
+  <meta name="description" content="NVO987 is a multidisciplinary artistic and cultural initiative exploring the intersections of visual culture and art history. NEXARIUM SHA-512 Generator is a professional browser-based cryptographic utility for generating and verifying SHA-512 hashes locally without transmitting user data.">
+  <meta name="keywords" content="NVO987, NEXARIUM, SHA-512, SHA512, Hash Generator, Cryptography, Checksum, Integrity Verification, Browser Hash Generator, Local Processing, File Hashing, Digital Security, Web Crypto API">
+  <meta name="author" content="Nicholas Van-Orton">
+  <meta name="creator" content="Nicholas Van-Orton">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+
+  <meta name="theme-color" content="#1d211f">
+  <meta name="color-scheme" content="light">
+
+  <link rel="canonical" href="https://sha512.nexarium.us">
+  <link rel="me" href="https://identity.nvo987.us">
+
+  <meta name="did" content="did:web:identity.nvo987.us">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NEXARIUM">
+  <meta property="og:title" content="NEXARIUM SHA-512 Generator">
+  <meta property="og:description" content="Professional browser-based SHA-512 hash generator with local processing, file hashing, integrity verification, and privacy-focused cryptographic utilities.">
+  <meta property="og:url" content="https://sha512.nexarium.us">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://sha512.nexarium.us/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NEXARIUM SHA-512 Generator">
+  <meta name="twitter:description" content="Generate and verify SHA-512 hashes locally in your browser without uploading data.">
+  <meta name="twitter:image" content="https://sha512.nexarium.us/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="alternate" type="application/did+json" href="https://identity.nvo987.us/.well-known/did.json">
+  <link rel="alternate" type="application/did+ld+json" href="https://identity.nvo987.us/.well-known/did-configuration.json">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <link rel="manifest" href="/manifest.json">
+
+  <meta name="msapplication-TileColor" content="#f4f0e8">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+
+  <style>
+    :root {
+      --ink: #1d211f;
+      --ink-soft: #404642;
+      --muted: #777d78;
+      --cream: #f4f0e8;
+      --cream-deep: #e9e3d8;
+      --paper: #fbfaf7;
+      --line: rgba(29, 33, 31, 0.12);
+      --line-strong: rgba(29, 33, 31, 0.22);
+      --accent: #9a6c3c;
+      --accent-dark: #7f562e;
+      --accent-light: #c7a77d;
+      --success: #246b4c;
+      --error: #a13f3f;
+      --shadow: 0 18px 50px rgba(27, 31, 29, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at top right, rgba(154, 108, 60, 0.08), transparent 30rem),
+        var(--cream);
+      color: var(--ink);
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    button,
+    textarea,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a,
+    label {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    textarea:focus-visible,
+    input:focus-visible,
+    .upload-btn:focus-within {
+      outline: 3px solid rgba(154, 108, 60, 0.3);
+      outline-offset: 3px;
+    }
+
+    .site-header {
+      position: relative;
+      overflow: hidden;
+      padding: 1rem 1rem 0;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4rem 1.5rem 3.75rem;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      opacity: 0.7;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.035em;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin: 0 auto;
+      font-size: clamp(2.75rem, 8vw, 6.5rem);
+      line-height: 0.98;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 1.5rem auto 0;
+      color: var(--ink-soft);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .privacy {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem;
+      margin: 1.4rem 0 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .privacy span {
+      white-space: nowrap;
+    }
+
+    .privacy .dot {
+      color: var(--accent);
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--max-width));
+      margin: 0 auto;
+      padding: 2rem 0 5rem;
+    }
+
+    .card {
+      position: relative;
+      margin-bottom: 1.25rem;
+      padding: clamp(1.35rem, 4vw, 2.5rem);
+      background: rgba(251, 250, 247, 0.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .card::before {
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      width: 52px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 0 0 999px 999px;
+      content: "";
+    }
+
+    .card h2 {
+      margin-bottom: 1.35rem;
+      font-size: clamp(1.65rem, 4vw, 2.35rem);
+      line-height: 1.15;
+    }
+
+    .card p {
+      max-width: 900px;
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    .input-label {
+      display: block;
+      margin-bottom: 0.65rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      color: var(--ink);
+      transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+    }
+
+    textarea:hover,
+    input[type="text"]:hover {
+      border-color: rgba(154, 108, 60, 0.45);
+    }
+
+    textarea:focus,
+    input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(154, 108, 60, 0.1);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 260px;
+      padding: 1.2rem;
+      resize: vertical;
+      line-height: 1.65;
+    }
+
+    input[type="text"] {
+      padding: 1rem 1.1rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    button,
+    .upload-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.75rem 1.1rem;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition:
+        transform 180ms ease,
+        background 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    button:hover,
+    .upload-btn:hover {
+      transform: translateY(-1px);
+      background: var(--ink);
+      color: var(--cream);
+      box-shadow: 0 10px 24px rgba(29, 33, 31, 0.12);
+    }
+
+    #hashBtn,
+    .upload-btn {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fffaf2;
+    }
+
+    #hashBtn:hover,
+    .upload-btn:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      min-width: 0;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: rgba(233, 227, 216, 0.42);
+    }
+
+    .stat-label {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      overflow-wrap: anywhere;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    #result {
+      min-height: 110px;
+      margin-top: 1.25rem;
+      padding: 1.2rem;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      background: var(--ink);
+      color: #eee9df;
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .file-area {
+      display: grid;
+      gap: 1rem;
+    }
+
+    #selectedFile {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 0.85rem 1rem;
+      border-left: 2px solid var(--accent-light);
+      color: var(--muted);
+      background: rgba(233, 227, 216, 0.42);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      overflow-wrap: anywhere;
+    }
+
+    .verification-result {
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .success,
+    .error {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .success {
+      color: var(--success);
+      background: rgba(36, 107, 76, 0.1);
+    }
+
+    .error {
+      color: var(--error);
+      background: rgba(161, 63, 63, 0.1);
+    }
+
+    .prose {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .prose p + p {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .site-footer {
+      position: relative;
+      overflow: hidden;
+      margin-top: 3rem;
+      padding: 4rem 1rem 1.5rem;
+      background: var(--ink);
+      color: #f3eee5;
+    }
+
+    .footer-inner {
+      width: min(100% - 1rem, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(244, 240, 232, 0.15);
+    }
+
+    .footer-brand {
+      max-width: 470px;
+    }
+
+    .footer-brand-name {
+      margin: 0;
+      color: var(--cream);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      line-height: 1;
+    }
+
+    .footer-brand p {
+      margin: 1rem 0 0;
+      color: rgba(244, 240, 232, 0.62);
+    }
+
+    .footer-identity {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .footer-link {
+      display: grid;
+      gap: 0.25rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(244, 240, 232, 0.1);
+      text-decoration: none;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+
+    .footer-link:hover {
+      color: var(--accent-light);
+      transform: translateX(4px);
+    }
+
+    .footer-label {
+      color: rgba(244, 240, 232, 0.48);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer-value {
+      overflow-wrap: anywhere;
+      font-size: 0.95rem;
+    }
+
+    .did-value {
+      display: inline-block;
+      width: fit-content;
+      max-width: 100%;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid rgba(244, 240, 232, 0.16);
+      border-radius: 7px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      color: rgba(244, 240, 232, 0.45);
+      font-size: 0.76rem;
+    }
+
+    .footer-bottom a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--accent-light);
+    }
+
+    @media (min-width: 700px) {
+      .header-inner {
+        padding: 5.5rem 3rem 4.75rem;
+      }
+
+      .container {
+        padding-top: 3rem;
+      }
+
+      .stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .footer-top {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .actions > * {
+        flex: 1 1 100%;
+      }
+
+      .privacy {
+        display: block;
+        line-height: 2;
+      }
+
+      .privacy .dot {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://nvo987.us#person",
+        "name": "Nicholas Van-Orton",
+        "jobTitle": "Independent researcher, founder of NVO987 Association",
+        "url": "https://nvo987.us",
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "DID Document",
+          "value": "https://identity.nvo987.us/.well-known/did.json"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://nvo987.fr#organization",
+        "name": "NVO987 – Culture Visuelle Moderne et Contemporaine Association",
+        "alternateName": [
+          "NVO987 Association",
+          "NVO987 – Culture Visuelle Moderne et Contemporaine"
+        ],
+        "url": "https://nvo987.fr",
+        "foundingDate": "2026",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "44 Rue Pasquier",
+          "postalCode": "75008",
+          "addressLocality": "Paris",
+          "addressCountry": "FR"
+        },
+        "founder": {
+          "@id": "https://nvo987.us#person"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "NEXARIUM SHA-512 Generator",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Web Browser",
+        "url": "https://sha512.nexarium.us",
+        "description": "Professional browser-based SHA-512 hash generator and verification utility.",
+        "creator": {
+          "@id": "did:web:identity.nvo987.us"
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "NEXARIUM",
+        "url": "https://nexarium.us",
+        "founder": {
+          "@id": "did:web:identity.nvo987.us"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="eyebrow">Nexarium / Cryptographic Utility</div>
+
+      <h1>NEXARIUM SHA-512</h1>
+
+      <p class="subtitle">
+        Professional Client-Side Hash Generator
+      </p>
+
+      <p class="privacy">
+        <span>No Cookies</span>
+        <span class="dot">•</span>
+        <span>No Analytics</span>
+        <span class="dot">•</span>
+        <span>No Tracking</span>
+        <span class="dot">•</span>
+        <span>Local Processing</span>
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>SHA-512 Text Hash</h2>
+
+      <label class="input-label" for="textInput">Source Text</label>
+
+      <textarea
+        id="textInput"
+        placeholder="Enter text to generate a SHA-512 hash"
+      ></textarea>
+
+      <div class="actions">
+        <button id="hashBtn" type="button">Generate</button>
+        <button id="copyBtn" type="button">Copy</button>
+        <button id="clearBtn" type="button">Clear All</button>
+        <button id="txtBtn" type="button">Export TXT</button>
+        <button id="jsonBtn" type="button">Export JSON</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-label">Characters</span>
+          <div class="stat-value" id="charCount">0</div>
+        </div>
+
+        <div class="stat">
+          <span class="stat-label">Bytes</span>
+          <div class="stat-value" id="byteCount">0</div>
+        </div>
+
+        <div class="stat">
+          <span class="stat-label">Hash Time</span>
+          <div class="stat-value" id="hashTime">0 ms</div>
+        </div>
+
+        <div class="stat">
+          <span class="stat-label">Hash Length</span>
+          <div class="stat-value" id="hashLength">0</div>
+        </div>
+      </div>
+
+      <div id="result" aria-live="polite">Awaiting input...</div>
+    </section>
+
+    <section class="card">
+      <h2>File Hashing</h2>
+
+      <div class="file-area">
+        <label for="fileInput" class="upload-btn">
+          Select File
+        </label>
+
+        <input type="file" id="fileInput" hidden>
+
+        <div id="selectedFile">
+          No file selected
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Hash Verification</h2>
+
+      <label class="input-label" for="verifyInput">
+        Expected SHA-512 Hash
+      </label>
+
+      <input
+        type="text"
+        id="verifyInput"
+        placeholder="Paste a SHA-512 hash for comparison"
+        autocomplete="off"
+        spellcheck="false"
+      >
+
+      <div class="actions">
+        <button id="verifyBtn" type="button">Verify</button>
+      </div>
+
+      <div
+        id="verifyResult"
+        class="verification-result"
+        aria-live="polite"
+      ></div>
+    </section>
+
+    <section class="card">
+      <h2>Privacy &amp; GDPR Statement</h2>
+
+      <div class="prose">
+        <p>
+          This utility is designed to perform cryptographic SHA-512 operations locally within the user's browser environment.
+        </p>
+
+        <p>
+          The application does not intentionally collect, store, transmit, sell or profile personal information submitted through the interface.
+        </p>
+
+        <p>
+          No cookies, advertising technologies, cross-site tracking mechanisms or analytics platforms are intentionally integrated into the application.
+        </p>
+
+        <p>
+          No registration, authentication, subscription or user account is required.
+        </p>
+
+        <p>
+          Hash calculations are executed locally using browser-supported cryptographic functions and are not intentionally transmitted for processing purposes.
+        </p>
+
+        <p>
+          Infrastructure providers, hosting platforms, DNS operators and network providers may generate technical logs required for security, availability, abuse prevention and operational purposes.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Legal Notice</h2>
+
+      <div class="prose">
+        <p>
+          This service is provided on an "as-is" and "as-available" basis without warranties, guarantees or representations of any kind, whether express or implied.
+        </p>
+
+        <p>
+          Users remain solely responsible for independently validating all cryptographic outputs before relying upon them within legal, commercial, operational, security, compliance or production environments.
+        </p>
+
+        <p>
+          The operator shall not be liable for direct, indirect, incidental, special, consequential or punitive damages arising from the use, misuse, interpretation or reliance upon this service.
+        </p>
+
+        <p>
+          The service is intended as a technical utility and does not constitute legal, regulatory, compliance or cybersecurity advice.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2 class="footer-brand-name">NEXARIUM</h2>
+          <p>
+            Professional Cryptographic Utilities
+          </p>
+        </div>
+
+        <div class="footer-identity">
+
+          <a
+            class="footer-link"
+            href="mailto:nvo@nvo987.us"
+          >
+            <span class="footer-label">Contact</span>
+            <span class="footer-value">nvo@nvo987.us</span>
+          </a>
+
+          <a
+            class="footer-link"
+            href="https://identity.nvo987.us"
+            target="_blank"
+            rel="me noopener noreferrer"
+          >
+            <span class="footer-label">Verifiable Digital Identity</span>
+            <code class="did-value">did:web:identity.nvo987.us</code>
+          </a>
+
+          <a
+            class="footer-link"
+            href="https://www.nvo987.us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="footer-label">Website</span>
+            <span class="footer-value">www.nvo987.us</span>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© Nexarium</span>
+        <span>
+          <a
+            href="https://www.nvo987.us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NVO987
+          </a>
+        </span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    const textInput = document.getElementById("textInput");
+    const resultBox = document.getElementById("result");
+    const hashTime = document.getElementById("hashTime");
+    const hashLength = document.getElementById("hashLength");
+    const charCount = document.getElementById("charCount");
+    const byteCount = document.getElementById("byteCount");
+    const verifyInput = document.getElementById("verifyInput");
+    const verifyResult = document.getElementById("verifyResult");
+    const fileInput = document.getElementById("fileInput");
+    const selectedFile = document.getElementById("selectedFile");
+
+    textInput.addEventListener("input", function () {
+      charCount.textContent = this.value.length;
+      byteCount.textContent = new TextEncoder().encode(this.value).length;
+    });
+
+    async function sha512(text) {
+      const data = new TextEncoder().encode(text);
+      const hash = await crypto.subtle.digest("SHA-512", data);
+
+      return Array.from(new Uint8Array(hash))
+        .map(byte => byte.toString(16).padStart(2, "0"))
+        .join("");
+    }
+
+    async function generateHash() {
+      const value = textInput.value;
+
+      if (!value) {
+        resultBox.innerText = "Please enter text.";
+        return;
+      }
+
+      const start = performance.now();
+      const hash = await sha512(value);
+      const end = performance.now();
+
+      resultBox.innerText = hash;
+      hashLength.textContent = hash.length;
+      hashTime.textContent = `${(end - start).toFixed(2)} ms`;
+    }
+
+    document
+      .getElementById("hashBtn")
+      .addEventListener("click", generateHash);
+
+    document
+      .getElementById("copyBtn")
+      .addEventListener("click", async function () {
+        try {
+          await navigator.clipboard.writeText(resultBox.innerText);
+        } catch (error) {
+          const temporaryArea = document.createElement("textarea");
+          temporaryArea.value = resultBox.innerText;
+          document.body.appendChild(temporaryArea);
+          temporaryArea.select();
+          document.execCommand("copy");
+          temporaryArea.remove();
+        }
+      });
+
+    document
+      .getElementById("clearBtn")
+      .addEventListener("click", function () {
+        textInput.value = "";
+        verifyInput.value = "";
+        verifyResult.innerHTML = "";
+        fileInput.value = "";
+        selectedFile.innerText = "No file selected";
+
+        resultBox.innerText = "Awaiting input...";
+        charCount.textContent = "0";
+        byteCount.textContent = "0";
+        hashLength.textContent = "0";
+        hashTime.textContent = "0 ms";
+      });
+
+    function exportTXT() {
+      const blob = new Blob(
+        [resultBox.innerText],
+        { type: "text/plain" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "sha512.txt";
+      link.click();
+
+      URL.revokeObjectURL(url);
+    }
+
+    document
+      .getElementById("txtBtn")
+      .addEventListener("click", exportTXT);
+
+    function exportJSON() {
+      const data = {
+        algorithm: "SHA-512",
+        timestamp: new Date().toISOString(),
+        hash: resultBox.innerText
+      };
+
+      const blob = new Blob(
+        [JSON.stringify(data, null, 2)],
+        { type: "application/json" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "sha512.json";
+      link.click();
+
+      URL.revokeObjectURL(url);
+    }
+
+    document
+      .getElementById("jsonBtn")
+      .addEventListener("click", exportJSON);
+
+    document
+      .getElementById("verifyBtn")
+      .addEventListener("click", function () {
+        const expected = verifyInput.value.trim().toLowerCase();
+        const actual = resultBox.innerText.trim().toLowerCase();
+
+        if (!expected) {
+          verifyResult.innerHTML =
+            "<span class='error'>No hash provided.</span>";
+          return;
+        }
+
+        if (actual === expected) {
+          verifyResult.innerHTML =
+            "<span class='success'>MATCH</span>";
+        } else {
+          verifyResult.innerHTML =
+            "<span class='error'>NO MATCH</span>";
+        }
+      });
+
+    fileInput.addEventListener("change", async function () {
+      const file = this.files[0];
+
+      if (!file) {
+        selectedFile.innerText = "No file selected";
+        return;
+      }
+
+      selectedFile.innerText = file.name;
+
+      const start = performance.now();
+      const buffer = await file.arrayBuffer();
+
+      const hash = await crypto.subtle.digest(
+        "SHA-512",
+        buffer
+      );
+
+      const hex = Array.from(new Uint8Array(hash))
+        .map(byte => byte.toString(16).padStart(2, "0"))
+        .join("");
+
+      resultBox.innerText = hex;
+      hashLength.textContent = hex.length;
+
+      const end = performance.now();
+      hashTime.textContent = `${(end - start).toFixed(2)} ms`;
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.ctrlKey && event.key === "Enter") {
+        generateHash();
+      }
+    });
+
+    console.log("Nexarium SHA-512 Professional Ready");
+  </script>
+
+</body>
+    </html>
